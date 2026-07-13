@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>La Oreja de Vancho · El Expediente</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --paper:#e9e4d6; --paper2:#f0ece0; --ink:#191713; --ink2:#4a463c;
+  --line:#c9c1ac; --red:#d31f2b; --redink:#a3141d;
+  --yellow:#ffd23c; --green:#0f7a5f; --bubble:#d6f0c2; --bubbleln:#a9d98a;
+  --grey:#e2ddd0; --accent:#d31f2b;
+  --shadow:rgba(25,23,19,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#141613; --paper2:#1c1f1a; --ink:#efe9db; --ink2:#a7a08c;
+    --line:#3a3d33; --red:#ff5a4d; --redink:#ff7a6f;
+    --yellow:#ffd23c; --green:#4fd7a8; --bubble:#254634; --bubbleln:#3c6b4c;
+    --grey:#24271f; --accent:#ff5a4d; --shadow:rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="light"]{
+  --paper:#e9e4d6; --paper2:#f0ece0; --ink:#191713; --ink2:#4a463c;
+  --line:#c9c1ac; --red:#d31f2b; --redink:#a3141d; --green:#0f7a5f;
+  --bubble:#d6f0c2; --bubbleln:#a9d98a; --grey:#e2ddd0; --accent:#d31f2b; --shadow:rgba(25,23,19,.18);
+}
+:root[data-theme="dark"]{
+  --paper:#141613; --paper2:#1c1f1a; --ink:#efe9db; --ink2:#a7a08c;
+  --line:#3a3d33; --red:#ff5a4d; --redink:#ff7a6f; --green:#4fd7a8;
+  --bubble:#254634; --bubbleln:#3c6b4c; --grey:#24271f; --accent:#ff5a4d; --shadow:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif; line-height:1.55;
+  font-size:18px;
+  background-image:radial-gradient(var(--line) .6px,transparent .6px);
+  background-size:20px 20px;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.disp{font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Franklin Gothic Bold",sans-serif;font-weight:400;letter-spacing:.01em;line-height:.92;text-wrap:balance;text-transform:uppercase}
+.mono{font-family:ui-monospace,"SFMono-Regular",Menlo,"Courier New",monospace}
+.tnum{font-variant-numeric:tabular-nums}
+a{color:var(--red)}
+
+/* ---------- MASTHEAD ---------- */
+header.mast{border-bottom:5px solid var(--ink);margin-top:26px;padding-bottom:14px}
+.mast .kick{display:flex;justify-content:space-between;align-items:center;
+  font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);border-bottom:1px solid var(--line);padding-bottom:8px;flex-wrap:wrap;gap:6px}
+.mast h1{margin:.18em 0 .06em;font-size:clamp(52px,13.5vw,132px)}
+.mast h1 .of{color:var(--red)}
+.mast .sub{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;border-top:2px solid var(--ink);padding-top:8px;margin-top:6px}
+.mast .sub .lede{font-style:italic;font-size:16px;color:var(--ink2);max-width:52ch}
+.mast .price{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+
+/* ---------- SECTION ---------- */
+section{padding:44px 0 8px}
+.eyebrow{display:inline-block;background:var(--ink);color:var(--paper);font-family:ui-monospace,monospace;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;margin-bottom:14px}
+h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
+.dek{font-style:italic;color:var(--ink2);max-width:60ch;margin:0 0 24px;font-size:17px}
+.rule{height:3px;background:var(--ink);border:0;margin:0}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);border:3px solid var(--ink)}
+.stat{background:var(--paper2);padding:16px 14px}
+.stat .n{font-family:Impact,"Arial Narrow Bold",sans-serif;font-size:clamp(30px,6vw,46px);line-height:1;color:var(--red)}
+.stat .l{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:6px}
+@media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- RANKING ---------- */
+.rank{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
+.row .who{font-family:ui-monospace,monospace;font-size:14px;text-align:right;font-weight:bold}
+.row .bar{position:relative;height:30px;background:var(--grey);border:1.5px solid var(--ink)}
+.row .fill{position:absolute;inset:0 auto 0 0;background:var(--red);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-family:ui-monospace,monospace;font-size:12.5px;font-weight:bold;min-width:38px}
+:root[data-theme="dark"] .row .fill{color:#141613}
+@media (prefers-color-scheme:dark){.row .fill{color:#141613}}
+@media(max-width:620px){.row{grid-template-columns:96px 1fr}.row .who{font-size:12px}}
+
+/* ---------- CHAT BUBBLES ---------- */
+.thread{display:flex;flex-direction:column;gap:9px;margin:8px 0 4px}
+.bub{max-width:82%;padding:8px 12px 7px;border-radius:12px;position:relative;font-size:16.5px;box-shadow:1px 1px 0 var(--shadow)}
+.bub .nm{display:block;font-family:ui-monospace,monospace;font-size:11.5px;font-weight:bold;letter-spacing:.02em;margin-bottom:1px}
+.bub .tm{font-family:ui-monospace,monospace;font-size:10.5px;color:var(--ink2);float:right;margin:4px 0 -2px 8px}
+.in{align-self:flex-start;background:var(--paper2);border:1.5px solid var(--line);border-top-left-radius:3px}
+.in .nm{color:var(--red)}
+.out{align-self:flex-end;background:var(--bubble);border:1.5px solid var(--bubbleln);border-top-right-radius:3px}
+.out .nm{color:var(--green)}
+
+/* ---------- TIMELINE ---------- */
+.tl{border-left:3px solid var(--ink);margin-left:8px;padding-left:0}
+.ev{position:relative;padding:0 0 30px 26px}
+.ev::before{content:"";position:absolute;left:-9px;top:4px;width:14px;height:14px;background:var(--red);border:3px solid var(--paper);border-radius:50%}
+.ev .date{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);font-weight:bold}
+.ev h3{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:clamp(20px,4.4vw,28px);margin:2px 0 5px;letter-spacing:.01em}
+.ev p{margin:0;font-size:16.5px}
+.ev .tag{display:inline-block;font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--yellow);color:#191713;padding:2px 7px;margin-top:8px;border:1.5px solid var(--ink)}
+
+/* ---------- PROFILE CARDS ---------- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.card{background:var(--paper2);border:2.5px solid var(--ink);padding:16px 16px 15px;box-shadow:4px 4px 0 var(--ink)}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:7px;margin-bottom:9px}
+.card .nm{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:25px;letter-spacing:.01em}
+.card .role{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);font-weight:bold;text-align:right;max-width:12ch}
+.card p{margin:0 0 10px;font-size:15.5px;line-height:1.5}
+.card .meta{display:flex;flex-wrap:wrap;gap:5px}
+.card .chip{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.03em;background:var(--grey);border:1.5px solid var(--line);padding:2px 7px;color:var(--ink2)}
+.card .chip b{color:var(--ink)}
+
+/* ---------- MYTH / callouts ---------- */
+.myth{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:640px){.myth{grid-template-columns:1fr}}
+.mcard{border:2.5px solid var(--ink);padding:15px 16px;background:var(--paper2)}
+.mcard h3{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:23px;margin:0 0 4px;letter-spacing:.01em}
+.mcard .n{font-family:ui-monospace,monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;font-weight:bold}
+.mcard p{margin:6px 0 0;font-size:15.5px}
+
+/* ---------- VERDICTS / stamps ---------- */
+.verd{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:640px){.verd{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.verd{grid-template-columns:1fr}}
+.stamp{border:3px double var(--redink);color:var(--redink);padding:14px 12px;text-align:center;background:transparent;transform:rotate(-1.4deg)}
+.stamp:nth-child(even){transform:rotate(1.6deg)}
+.stamp:nth-child(3n){transform:rotate(-.6deg)}
+.stamp .em{font-size:26px;line-height:1}
+.stamp .ttl{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:17px;letter-spacing:.02em;margin:6px 0 3px;color:var(--ink)}
+.stamp .win{font-family:ui-monospace,monospace;font-size:13px;font-weight:bold}
+.stamp .sc{font-family:ui-monospace,monospace;font-size:10.5px;color:var(--ink2);margin-top:2px;letter-spacing:.04em}
+
+/* ---------- pull ---------- */
+.pull{border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:20px 0;margin:26px 0;text-align:center}
+.pull q{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:clamp(24px,5.4vw,40px);font-style:normal;quotes:none;display:block;line-height:1.02}
+.pull .attr{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-top:10px}
+
+/* ---------- footer ---------- */
+footer{margin:40px 0 60px;border-top:5px solid var(--ink);padding-top:16px;text-align:center}
+footer .big{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:clamp(30px,8vw,60px);line-height:.95}
+footer p{font-style:italic;color:var(--ink2);max-width:48ch;margin:12px auto 0}
+footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-top:20px}
+
+.toggle{position:fixed;top:12px;right:12px;z-index:20;background:var(--ink);color:var(--paper);border:0;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;cursor:pointer;border-radius:2px}
+.note{font-family:ui-monospace,monospace;font-size:11.5px;color:var(--ink2);text-align:center;margin-top:14px;letter-spacing:.03em}
+::selection{background:var(--yellow);color:#191713}
+</style>
+</head>
+<body>
+
+
+<button class="toggle" id="tg" aria-label="Cambiar tema">◐ Tema</button>
+
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <header class="mast">
+    <div class="kick">
+      <span>Edición Aniversario · N.º 1</span>
+      <span>Precio: 3 stickers de anto</span>
+    </div>
+    <h1 class="disp">La Oreja<br>de <span class="of">Vancho</span></h1>
+    <div class="sub">
+      <p class="lede">El expediente completo de un año de grupo: 132.906 mensajes, 391 días de caos, siete sospechosos y una inteligencia artificial tomada de rehén.</p>
+      <span class="price mono">19 JUN 2025 —<br>13 JUL 2026</span>
+    </div>
+  </header>
+
+  <!-- NÚMEROS -->
+  <section>
+    <span class="eyebrow">Los números del expediente</span>
+    <h2 class="head disp">La evidencia</h2>
+    <p class="dek">Todo lo que sigue está documentado. No se puede negar lo que ya está en el chat.</p>
+    <div class="stats">
+      <div class="stat"><div class="n tnum">132.906</div><div class="l">mensajes de texto</div></div>
+      <div class="stat"><div class="n tnum">391</div><div class="l">días sin parar</div></div>
+      <div class="stat"><div class="n tnum">340</div><div class="l">msgs por día promedio</div></div>
+      <div class="stat"><div class="n tnum">1.974</div><div class="l">récord en un solo día</div></div>
+      <div class="stat"><div class="n tnum">8.322</div><div class="l">fotos y stickers</div></div>
+      <div class="stat"><div class="n tnum">9.200</div><div class="l">risas (jaja/ksks)</div></div>
+      <div class="stat"><div class="n tnum">5.442</div><div class="l">mensajes de 0 a 5 AM</div></div>
+      <div class="stat"><div class="n tnum">127</div><div class="l">pruebas borradas 🗑️</div></div>
+    </div>
+    <p class="note">Hora pico del grupo: las 21 h. Segundo lugar: las 19 h. Tercero, preocupante: la medianoche.</p>
+  </section>
+
+  <!-- CUADRO DE HONOR -->
+  <section>
+    <span class="eyebrow">Cuadro de honor</span>
+    <h2 class="head disp">¿Quién habla más?</h2>
+    <p class="dek">Ranking histórico por cantidad de mensajes. Lauti Gauna no escribe en el grupo: <em>el grupo ocurre dentro de Lauti Gauna.</em></p>
+    <div class="rank">
+      <div class="row"><div class="who">Lauti Gauna</div><div class="bar"><div class="fill" style="width:100%">35.075</div></div></div>
+      <div class="row"><div class="who">antito 🤧</div><div class="bar"><div class="fill" style="width:73%">25.586</div></div></div>
+      <div class="row"><div class="who">Juampa</div><div class="bar"><div class="fill" style="width:51%">17.923</div></div></div>
+      <div class="row"><div class="who">pepe diaz</div><div class="bar"><div class="fill" style="width:46%">16.271</div></div></div>
+      <div class="row"><div class="who">fort</div><div class="bar"><div class="fill" style="width:38%">13.447</div></div></div>
+      <div class="row"><div class="who">Bau</div><div class="bar"><div class="fill" style="width:36%">12.656</div></div></div>
+      <div class="row"><div class="who">Nach0000…</div><div class="bar"><div class="fill" style="width:31%">11.009</div></div></div>
+      <div class="row"><div class="who">Agus 👻</div><div class="bar"><div class="fill" style="width:4%">659</div></div></div>
+      <div class="row"><div class="who">Meta AI 🤖</div><div class="bar"><div class="fill" style="width:2%">254</div></div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <div class="pull">
+    <q>“Estaba cagando y me levanté a aplaudir.”</q>
+    <div class="attr">— Lauti Gauna, 17 de julio · frase fundacional</div>
+  </div>
+
+  <!-- DÍAS ICÓNICOS -->
+  <section>
+    <span class="eyebrow">La cronología</span>
+    <h2 class="head disp">Días icónicos</h2>
+    <p class="dek">Las fechas que quedaron marcadas a fuego en el historial del chat.</p>
+    <div class="tl">
+      <div class="ev">
+        <div class="date mono">19 JUN 2025</div>
+        <h3>Nace la era</h3>
+        <p>Bau estrena celular nuevo y el grupo decide refundar “La Oreja de Vancho Studios”. Primer brindis oficial: “hay que celebrar por el celular. Y por Lanata. Esa no falla.” 🍻</p>
+        <span class="tag">día uno</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">17 JUL 2025 · récord absoluto</div>
+        <h3>El día de 1.974 mensajes</h3>
+        <p>El pico histórico del grupo. Lauti anuncia que “manifestó” a la ex de su primo, se autoproclama “re papucho” y deja la frase que definiría al chat para siempre. Mismo día: Nacho se pone de novio con Lourdes. Todo empieza acá.</p>
+        <span class="tag">el big bang</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">22 OCT 2025</div>
+        <h3>El karma de las 7 Big Macs</h3>
+        <p>Cumpleaños de Nacho (“boffe”). Horas después, antito se cae de las escaleras en el laburo y se le vuelan “como 7 Big Macs”. Su diagnóstico: karma “por burlarme de bauti”.</p>
+        <span class="tag">justicia divina</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">28 NOV 2025 · 1.654 msgs</div>
+        <h3>La noche del eunuco</h3>
+        <p>Una de las noches más largas del año. Debate filosófico sobre la palabra “eunuco”, maratón de Steven Universe y Meta AI obligada a generar imágenes imposibles. También aconseja no tocar “el misil en la calle”.</p>
+        <span class="tag">peak absurdo</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">24 NOV — 05 DIC 2025</div>
+        <h3>Temporada de finales</h3>
+        <p>Ola de “APROBÉ” en cadena: pepe, anto, fort (“aprobé stop motion”), Nacho consigue “un laburo bastante copado”. El grupo, sorprendentemente, también estudia.</p>
+        <span class="tag">productividad</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">11 MAY 2026</div>
+        <h3>“El peor amigo del mundo”</h3>
+        <p>Organizando el cumple de Nacho en lo de Gauna, nace un juego nuevo: “vamos a jugar el peor amigo del mundo y le damos todas las cartas a Nacho”. La logística de si la fiesta “pincha temprano” dura horas.</p>
+        <span class="tag">nueva mitología</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">09 JUN 2026</div>
+        <h3>“El espejo no es compatible con el Suzuki”</h3>
+        <p>Nacho abre la crisis Lourdes más documentada del año con un parte oficial: “@todos malas noticias… el espejo no es compatible con el Suzuki, es demasiado grande, no entra”. Después, el drama real: parciales, ganas y monólogos épicos.</p>
+        <span class="tag">culebrón</span>
+      </div>
+      <div class="ev">
+        <div class="date mono">25 JUN 2026</div>
+        <h3>Cumple del más peque</h3>
+        <p>Bau cumple años y recibe el saludo más tierno del grupo: “te amamos bauti, aunque no lo parezca y aunque pareciera que no te lo merezcas”. En paralelo, fort festeja sus (chiste) 17.</p>
+        <span class="tag">amor grupal</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOMENTOS DIVERTIDOS -->
+  <section>
+    <span class="eyebrow">Pruebas fotográficas</span>
+    <h2 class="head disp">Momentos<br>divertidos</h2>
+    <p class="dek">Citas textuales recuperadas del historial. Se transcriben tal cual fueron escritas.</p>
+    <div class="thread">
+      <div class="in bub"><span class="nm">Lauti Gauna</span>no, soy irresistible bldo, era obvio. estoy re papucho <span class="tm">17 JUL</span></div>
+      <div class="out bub"><span class="nm">Bau</span>estaba cagando y me levanté a aplaudir <span class="tm">17 JUL</span></div>
+      <div class="in bub"><span class="nm">Lauti Gauna</span>estaba aplaudiendo y cagué para levantarme <span class="tm">17 JUL</span></div>
+      <div class="out bub"><span class="nm">antito 🤧</span>saben, hoy me cayó el karma. me caí de las escaleras en el laburo y se me cayeron como 7 big macs <span class="tm">22 OCT</span></div>
+      <div class="in bub"><span class="nm">pepe diaz</span>es increíble como el autocorrector me cambia todo. quise poner “re piola” y me puso “re poco piola” <span class="tm">22 OCT</span></div>
+      <div class="out bub"><span class="nm">Juampa</span>te amamos bauti, aunque no lo parezca y aunque pareciera que no te lo merezcas <span class="tm">25 JUN</span></div>
+      <div class="in bub"><span class="nm">fort</span>gracias amigo!!! ahora voy a salir con una de 13 <span class="tm">25 JUN</span></div>
+      <div class="out bub"><span class="nm">Juampa</span>me encontré un misil en la calle, ¿qué debo hacer? <span class="tm">28 NOV</span></div>
+      <div class="in bub"><span class="nm">Meta AI 🤖</span>¡No toques el misil! Mantené distancia y llamá inmediatamente a las autoridades locales… <span class="tm">28 NOV</span></div>
+    </div>
+  </section>
+
+  <!-- COSAS RARAS -->
+  <section>
+    <span class="eyebrow">Archivo X</span>
+    <h2 class="head disp">Cosas raras</h2>
+    <p class="dek">Conversaciones que no tienen explicación posible y que igual pasaron.</p>
+    <div class="myth">
+      <div class="mcard">
+        <span class="n mono">Expediente 01</span>
+        <h3>La tesis del eunuco</h3>
+        <p>Una noche entera girando alrededor de una sola palabra. “Banco ser mitad eunuco 🙌”, dijo fort. Juampa proponía spin-offs: “las aventuras de los eunucos”.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Expediente 02</span>
+        <h3>“Extraño” × 30</h3>
+        <p>El grupo entró en loop existencial: extrañar la secundaria, extrañar a Córdoba, “extraño el mundo sin IA 😭”, hasta la meta-aclaración de Nacho: “es extraño de raro, no es que lo extraño de extrañar”.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Expediente 03</span>
+        <h3>El clon homicida</h3>
+        <p>Nacho, sin que nadie preguntara: “ese era mi clon y lo tuve que matar porque me quería matar a mí”. No hubo repreguntas.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Expediente 04</span>
+        <h3>El poder americano</h3>
+        <p>pepe consigue “un bolsito” y después “unos zapatos” como si fueran logros de vida. Y lo eran. 🐎🐎🐎</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COSAS TENEBROSAS -->
+  <section>
+    <span class="eyebrow">Advertencia</span>
+    <h2 class="head disp">Cosas tenebrosas</h2>
+    <p class="dek">El lado oscuro del expediente. 302 mensajes mencionan la palabra “matar” o “miedo”. La mayoría, por suerte, en broma.</p>
+    <div class="thread">
+      <div class="in bub"><span class="nm">Nach000000000</span>yo te voy a matar a vos y te voy a despedazar <span class="tm">25 JUN</span></div>
+      <div class="out bub"><span class="nm">Juampa</span>viste que cuando empezás algo y va bien, te da miedo contarlo, porque cuando lo contás se va a la verga <span class="tm">15 JUL</span></div>
+      <div class="in bub"><span class="nm">antito 🤧</span>tengo mucho miedo lpm <span class="tm">25 JUL</span></div>
+      <div class="out bub"><span class="nm">fort</span>chabón, qué miedo que sepa tanto de vos <span class="tm">21 JUN</span></div>
+      <div class="in bub"><span class="nm">Nach000000000</span>he muerto. <span class="tm">01 JUL</span></div>
+    </div>
+    <p class="note">Nota del editor: nadie salió lastimado. Salvo antito, por las escaleras. Y fort, por el minoxidil.</p>
+  </section>
+
+  <!-- MITOLOGÍA / CHISTES INTERNOS -->
+  <section>
+    <span class="eyebrow">Diccionario interno</span>
+    <h2 class="head disp">La mitología<br>del grupo</h2>
+    <p class="dek">Cinco leyendas que hay que conocer para entender de qué se ríen. No se explican afuera.</p>
+    <div class="myth">
+      <div class="mcard">
+        <span class="n mono">La saga · 206 menciones</span>
+        <h3>Nacho ❤️ Lourdes</h3>
+        <p>El culebrón oficial del chat. De “nos pusimos de novios” a “no está dispuesta a sacrificar ni un minuto esta piba”. Nacho narra su vida amorosa en monólogos de 15 mensajes seguidos y el grupo hace de terapia.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">El rehén · 254 msgs</span>
+        <h3>Meta AI</h3>
+        <p>El único integrante no humano. Lo etiquetan para que genere eunucos, insulte gente y opine sobre misiles. Su frase más usada: “Sorry, I can’t help you with this request right now.”</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Terror capilar · 15 menciones</span>
+        <h3>El minoxidil</h3>
+        <p>fort declara: “chicos, el minoxidil me dejó pelado”. Nace la obsesión capilar compartida con Nacho: “esto me hizo el Minoxidil”. La lucha continúa.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Autoestima · nivel dios</span>
+        <h3>El papuchismo</h3>
+        <p>Doctrina de Lauti Gauna: “ella quiere un hombre y yo soy hombre, y aparte soy re papucho. Estoy más papucho que cuando me conoció.” Dicho sobre la ex de su primo.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Ley del grupo</span>
+        <h3>“No la pinchen”</h3>
+        <p>Mandato sagrado antes de cada juntada, dirigido a que nadie se vaya temprano “como en lo de Lourdes”. Se incumple siempre. Alguien siempre se duerme en el sillón (spoiler: anto).</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Identidad</span>
+        <h3>La Oreja de Vancho</h3>
+        <p>El nombre. La marca. La productora imaginaria que “se va a refundar pronto”. Filosofía interna: “la Oreja de Vancho ya es la peor, así que no podés caer más bajo”.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VEREDICTOS -->
+  <section>
+    <span class="eyebrow">Fallo del jurado</span>
+    <h2 class="head disp">Los veredictos</h2>
+    <p class="dek">Premios oficiales del año, otorgados por la evidencia, sin posibilidad de apelación.</p>
+    <div class="verd">
+      <div class="stamp"><div class="em">🗣️</div><div class="ttl">El Charlatán Mayor</div><div class="win">Lauti Gauna</div><div class="sc mono">35.075 mensajes</div></div>
+      <div class="stamp"><div class="em">📸</div><div class="ttl">Rey del Multimedia</div><div class="win">antito 🤧</div><div class="sc mono">3.407 fotos/stickers</div></div>
+      <div class="stamp"><div class="em">😂</div><div class="ttl">La Risa Fácil</div><div class="win">Lauti Gauna</div><div class="sc mono">2.688 jaja</div></div>
+      <div class="stamp"><div class="em">🌙</div><div class="ttl">El Vampiro</div><div class="win">Lauti Gauna</div><div class="sc mono">1.688 msgs de 1-5 AM</div></div>
+      <div class="stamp"><div class="em">🗑️</div><div class="ttl">Borra Pruebas</div><div class="win">Juampa</div><div class="sc mono">37 mensajes eliminados</div></div>
+      <div class="stamp"><div class="em">🙏</div><div class="ttl">El Arrepentido</div><div class="win">Juampa</div><div class="sc mono">27 veces “perdón”</div></div>
+      <div class="stamp"><div class="em">❤️‍🔥</div><div class="ttl">El Novelista</div><div class="win">Nach000000000</div><div class="sc mono">saga Lourdes</div></div>
+      <div class="stamp"><div class="em">👻</div><div class="ttl">El Fantasma</div><div class="win">Agus</div><div class="sc mono">solo 659 mensajes</div></div>
+      <div class="stamp"><div class="em">🤖</div><div class="ttl">La Víctima</div><div class="win">Meta AI</div><div class="sc mono">rehén del grupo</div></div>
+    </div>
+  </section>
+
+  <!-- PERFILES -->
+  <section>
+    <span class="eyebrow">Los sospechosos</span>
+    <h2 class="head disp">Ficha de<br>cada uno</h2>
+    <p class="dek">Perfil psicológico basado enteramente en lo que dejaron escrito.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="top"><span class="nm">Lauti Gauna</span><span class="role">el presidente</span></div>
+        <p>El motor. Un tercio de todo el chat es él. Rey de las risas, de la madrugada, del “bldo” y del “te amo”. Narrador épico de sus propias hazañas amorosas y el más papucho del planeta (según él).</p>
+        <div class="meta"><span class="chip"><b>35.075</b> msgs</span><span class="chip"><b>1.688</b> madrugadas</span><span class="chip"><b>70</b> “te amo”</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">antito 🤧</span><span class="role">el fotógrafo</span></div>
+        <p>Puro caos visual: 3.407 fotos y stickers, más que nadie. El que más veces rompe el silencio del grupo. Karma andante, nostálgico crónico (“extraño la secundaria todos los días”) y torturador oficial de Meta AI.</p>
+        <div class="meta"><span class="chip"><b>3.407</b> multimedia</span><span class="chip"><b>92</b> arranques</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">Juampa</span><span class="role">el comediante</span></div>
+        <p>Segundo en risas y campeón indiscutido de mensajes borrados. También el que más pide perdón: comete el crimen, borra la prueba y se disculpa. Dupla histórica de “bldo” con Lauti.</p>
+        <div class="meta"><span class="chip"><b>37</b> borrados</span><span class="chip"><b>27</b> “perdón”</span><span class="chip"><b>313</b> “bldo”</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">pepe diaz</span><span class="role">el del autocorrector</span></div>
+        <p>Le echa toda la culpa al autocorrector (“re piola” → “re poco piola”). Coleccionista de logros pequeños —un bolsito, unos zapatos, una skin de Fortnite— y gamer de LoL con Mauri.</p>
+        <div class="meta"><span class="chip"><b>16.271</b> msgs</span><span class="chip"><b>768</b> madrugadas</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">fort</span><span class="role">el monologuista</span></div>
+        <p>Récord de monólogo: 38 mensajes seguidos sin que nadie conteste. Humor seco, “te amo” fáciles y una guerra personal contra la calvicie que documenta en tiempo real.</p>
+        <div class="meta"><span class="chip"><b>38</b> msgs seguidos</span><span class="chip"><b>31</b> “te amo”</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">Bau</span><span class="role">el benjamín</span></div>
+        <p>El más peque del grupo, festejado cada 25 de junio. Adicto a mandar fotos (1.070) y a las risas en mayúscula. Coprotagonista del episodio “estaba cagando y me levanté a aplaudir”.</p>
+        <div class="meta"><span class="chip"><b>1.070</b> multimedia</span><span class="chip"><b>961</b> jaja</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">Nach000000000</span><span class="role">el novelista</span></div>
+        <p>Sus mensajes son los más largos del chat. La saga con Lourdes es su novela por entregas y el grupo, su editorial. Gamer, dramático y autor de “he muerto.” como estado emocional.</p>
+        <div class="meta"><span class="chip"><b>28,4</b> caract. promedio</span><span class="chip"><b>206</b> “Lourdes”</span></div>
+      </div>
+      <div class="card">
+        <div class="top"><span class="nm">Agus 👻</span><span class="role">el fantasma</span></div>
+        <p>Aparece cada tanto y desaparece. 659 mensajes en todo el año: menos que las risas que Lauti manda en un mes. Consiguió “una changuita en una constructora por Benavídez”.</p>
+        <div class="meta"><span class="chip"><b>659</b> msgs</span><span class="chip">modo avión</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <footer>
+    <div class="big disp">Se levanta<br>la sesión</div>
+    <p>391 días, 132.906 mensajes y una sola conclusión: nadie va a poder caer más bajo que La Oreja de Vancho. Y eso, acá, es un cumplido.</p>
+    <div class="dl mono">Expediente cerrado · 13 JUL 2026 · próxima edición cuando anto mande 3.408 stickers</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var b=document.getElementById('tg');
+  b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var isDark = cur ? cur==='dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+    document.documentElement.setAttribute('data-theme', isDark?'light':'dark');
+  });
+})();
+</script>
+
+</body>
+</html>
