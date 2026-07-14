@@ -46,32 +46,29 @@ body{
 .tnum{font-variant-numeric:tabular-nums}
 a{color:var(--red)}
 
-/* ---------- MASTHEAD ---------- */
 header.mast{border-bottom:5px solid var(--ink);margin-top:26px;padding-bottom:14px}
 .mast .kick{display:flex;justify-content:space-between;align-items:center;
   font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);border-bottom:1px solid var(--line);padding-bottom:8px;flex-wrap:wrap;gap:6px}
 .mast h1{margin:.18em 0 .06em;font-size:clamp(52px,13.5vw,132px)}
 .mast h1 .of{color:var(--red)}
 .mast .sub{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;border-top:2px solid var(--ink);padding-top:8px;margin-top:6px}
-.mast .sub .lede{font-style:italic;font-size:16px;color:var(--ink2);max-width:52ch}
+.mast .sub .lede{font-style:italic;font-size:16px;color:var(--ink2);max-width:54ch}
 .mast .price{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
 
-/* ---------- SECTION ---------- */
 section{padding:44px 0 8px}
 .eyebrow{display:inline-block;background:var(--ink);color:var(--paper);font-family:ui-monospace,monospace;
   font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;margin-bottom:14px}
+.eyebrow.hot{background:var(--red);color:#fff}
 h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
 .dek{font-style:italic;color:var(--ink2);max-width:60ch;margin:0 0 24px;font-size:17px}
 .rule{height:3px;background:var(--ink);border:0;margin:0}
 
-/* ---------- STATS ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);border:3px solid var(--ink)}
 .stat{background:var(--paper2);padding:16px 14px}
 .stat .n{font-family:Impact,"Arial Narrow Bold",sans-serif;font-size:clamp(30px,6vw,46px);line-height:1;color:var(--red)}
 .stat .l{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-top:6px}
 @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
 
-/* ---------- RANKING ---------- */
 .rank{display:flex;flex-direction:column;gap:10px}
 .row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
 .row .who{font-family:ui-monospace,monospace;font-size:14px;text-align:right;font-weight:bold}
@@ -81,7 +78,6 @@ h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
 @media (prefers-color-scheme:dark){.row .fill{color:#141613}}
 @media(max-width:620px){.row{grid-template-columns:96px 1fr}.row .who{font-size:12px}}
 
-/* ---------- CHAT BUBBLES ---------- */
 .thread{display:flex;flex-direction:column;gap:9px;margin:8px 0 4px}
 .bub{max-width:82%;padding:8px 12px 7px;border-radius:12px;position:relative;font-size:16.5px;box-shadow:1px 1px 0 var(--shadow)}
 .bub .nm{display:block;font-family:ui-monospace,monospace;font-size:11.5px;font-weight:bold;letter-spacing:.02em;margin-bottom:1px}
@@ -91,7 +87,6 @@ h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
 .out{align-self:flex-end;background:var(--bubble);border:1.5px solid var(--bubbleln);border-top-right-radius:3px}
 .out .nm{color:var(--green)}
 
-/* ---------- TIMELINE ---------- */
 .tl{border-left:3px solid var(--ink);margin-left:8px;padding-left:0}
 .ev{position:relative;padding:0 0 30px 26px}
 .ev::before{content:"";position:absolute;left:-9px;top:4px;width:14px;height:14px;background:var(--red);border:3px solid var(--paper);border-radius:50%}
@@ -100,19 +95,29 @@ h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
 .ev p{margin:0;font-size:16.5px}
 .ev .tag{display:inline-block;font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--yellow);color:#191713;padding:2px 7px;margin-top:8px;border:1.5px solid var(--ink)}
 
-/* ---------- PROFILE CARDS ---------- */
+/* RANKED LIST (bad endings / ortiveadas) */
+.ranklist{display:flex;flex-direction:column;gap:0;border:3px solid var(--ink)}
+.rk{display:grid;grid-template-columns:64px 1fr;gap:0;border-bottom:1.5px solid var(--line);background:var(--paper2)}
+.rk:last-child{border-bottom:0}
+.rk .num{font-family:Impact,"Arial Narrow Bold",sans-serif;font-size:40px;line-height:1;color:#fff;background:var(--ink);display:flex;align-items:center;justify-content:center}
+.rk:nth-child(1) .num{background:var(--red)}
+.rk .body{padding:12px 15px}
+.rk .t{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:20px;letter-spacing:.01em;display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.rk .t .verdict{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.06em;color:var(--red);white-space:nowrap;text-transform:uppercase}
+.rk p{margin:5px 0 0;font-size:15.5px;line-height:1.45}
+.rk .q{font-style:italic;color:var(--ink2)}
+
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 @media(max-width:640px){.cards{grid-template-columns:1fr}}
 .card{background:var(--paper2);border:2.5px solid var(--ink);padding:16px 16px 15px;box-shadow:4px 4px 0 var(--ink)}
-.card .top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:7px;margin-bottom:9px}
-.card .nm{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:25px;letter-spacing:.01em}
-.card .role{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);font-weight:bold;text-align:right;max-width:12ch}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:7px;margin-bottom:9px;gap:8px}
+.card .nm{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:24px;letter-spacing:.01em}
+.card .role{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);font-weight:bold;text-align:right;max-width:13ch}
 .card p{margin:0 0 10px;font-size:15.5px;line-height:1.5}
 .card .meta{display:flex;flex-wrap:wrap;gap:5px}
 .card .chip{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.03em;background:var(--grey);border:1.5px solid var(--line);padding:2px 7px;color:var(--ink2)}
 .card .chip b{color:var(--ink)}
 
-/* ---------- MYTH / callouts ---------- */
 .myth{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 @media(max-width:640px){.myth{grid-template-columns:1fr}}
 .mcard{border:2.5px solid var(--ink);padding:15px 16px;background:var(--paper2)}
@@ -120,7 +125,14 @@ h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
 .mcard .n{font-family:ui-monospace,monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;font-weight:bold}
 .mcard p{margin:6px 0 0;font-size:15.5px}
 
-/* ---------- VERDICTS / stamps ---------- */
+/* dictionary */
+.dict{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);border:3px solid var(--ink)}
+@media(max-width:560px){.dict{grid-template-columns:1fr}}
+.dt{background:var(--paper2);padding:13px 15px}
+.dt .w{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:19px;color:var(--red)}
+.dt .d{font-size:15px;margin-top:2px}
+.dt .d b{font-family:ui-monospace,monospace;font-size:12px}
+
 .verd{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:640px){.verd{grid-template-columns:1fr 1fr}}
 @media(max-width:420px){.verd{grid-template-columns:1fr}}
@@ -128,19 +140,17 @@ h2.head{font-size:clamp(34px,7vw,62px);margin:0 0 6px}
 .stamp:nth-child(even){transform:rotate(1.6deg)}
 .stamp:nth-child(3n){transform:rotate(-.6deg)}
 .stamp .em{font-size:26px;line-height:1}
-.stamp .ttl{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:17px;letter-spacing:.02em;margin:6px 0 3px;color:var(--ink)}
+.stamp .ttl{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:16px;letter-spacing:.02em;margin:6px 0 3px;color:var(--ink)}
 .stamp .win{font-family:ui-monospace,monospace;font-size:13px;font-weight:bold}
 .stamp .sc{font-family:ui-monospace,monospace;font-size:10.5px;color:var(--ink2);margin-top:2px;letter-spacing:.04em}
 
-/* ---------- pull ---------- */
 .pull{border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:20px 0;margin:26px 0;text-align:center}
 .pull q{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:clamp(24px,5.4vw,40px);font-style:normal;quotes:none;display:block;line-height:1.02}
 .pull .attr{font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-top:10px}
 
-/* ---------- footer ---------- */
 footer{margin:40px 0 60px;border-top:5px solid var(--ink);padding-top:16px;text-align:center}
 footer .big{font-family:Impact,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-size:clamp(30px,8vw,60px);line-height:.95}
-footer p{font-style:italic;color:var(--ink2);max-width:48ch;margin:12px auto 0}
+footer p{font-style:italic;color:var(--ink2);max-width:52ch;margin:12px auto 0}
 footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-top:20px}
 
 .toggle{position:fixed;top:12px;right:12px;z-index:20;background:var(--ink);color:var(--paper);border:0;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;cursor:pointer;border-radius:2px}
@@ -155,7 +165,6 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
 
 <div class="wrap">
 
-  <!-- MASTHEAD -->
   <header class="mast">
     <div class="kick">
       <span>Edición Aniversario · N.º 1</span>
@@ -163,12 +172,11 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
     </div>
     <h1 class="disp">La Oreja<br>de <span class="of">Vancho</span></h1>
     <div class="sub">
-      <p class="lede">El expediente completo de un año de grupo: 132.906 mensajes, 391 días de caos, siete sospechosos y una inteligencia artificial tomada de rehén.</p>
+      <p class="lede">El expediente completo de un año de grupo: 132.906 mensajes, 391 días de caos, seis pibes, una sola mujer (anto), un fantasma con novia (Agus) y una inteligencia artificial tomada de rehén.</p>
       <span class="price mono">19 JUN 2025 —<br>13 JUL 2026</span>
     </div>
   </header>
 
-  <!-- NÚMEROS -->
   <section>
     <span class="eyebrow">Los números del expediente</span>
     <h2 class="head disp">La evidencia</h2>
@@ -186,7 +194,6 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
     <p class="note">Hora pico del grupo: las 21 h. Segundo lugar: las 19 h. Tercero, preocupante: la medianoche.</p>
   </section>
 
-  <!-- CUADRO DE HONOR -->
   <section>
     <span class="eyebrow">Cuadro de honor</span>
     <h2 class="head disp">¿Quién habla más?</h2>
@@ -210,7 +217,95 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
     <div class="attr">— Lauti Gauna, 17 de julio · frase fundacional</div>
   </div>
 
-  <!-- DÍAS ICÓNICOS -->
+  <!-- TOP 10 BAD ENDINGS LAUTI -->
+  <section>
+    <span class="eyebrow hot">Sección especial</span>
+    <h2 class="head disp">Top 10 bad<br>endings de<br>Lauti Gauna</h2>
+    <p class="dek">Un año entero enamorándose. Un año entero perdiendo. Lauti usa a anto de mensajera con cada chica y el resultado siempre es el mismo. Ranking de derrotas, de menos a más devastadora.</p>
+    <div class="ranklist">
+      <div class="rk"><div class="num">10</div><div class="body"><div class="t">Graciela Alfano <span class="verdict">objetivo imposible</span></div><p>Cuando el grupo le pregunta qué chica le gusta, responde “a mí me gusta Graciela Alfano” (70+ años). El techo de sus aspiraciones bien alto. <span class="q">“a mí me gusta graciela alfano”</span></p></div></div>
+      <div class="rk"><div class="num">9</div><div class="body"><div class="t">“Kiki y Pri” <span class="verdict">canceladas</span></div><p>Un plan doble que se cae antes de empezar: “me cancelaron kiki y pri”. Dos bajas en un solo mensaje. Récord de eficiencia.</p></div></div>
+      <div class="rk"><div class="num">8</div><div class="body"><div class="t">Melody <span class="verdict">nunca arrancó</span></div><p>Otra de la lista que anto tenía que sondear. “le preguntaste a Martu si conoce a melody??”. Se investigó más de lo que se avanzó.</p></div></div>
+      <div class="rk"><div class="num">7</div><div class="body"><div class="t">Verónica <span class="verdict">terminó en amenaza</span></div><p>Lo que sea que pasó fue tan grave que la conclusión de Lauti fue: <span class="q">“no amigo, voy a tener que matar a Verónica”.</span> Cerrado.</p></div></div>
+      <div class="rk"><div class="num">6</div><div class="body"><div class="t">Martu <span class="verdict">tiene novio</span></div><p>El clásico. Descubre tarde el detalle clave: “tiene novio esa martu?”. Sí, Lauti. Siempre tienen novio.</p></div></div>
+      <div class="rk"><div class="num">5</div><div class="body"><div class="t">Vicky <span class="verdict">huyó del país</span></div><p>Vicky y la familia se van a Philadelphia. La distancia más larga posible: un continente. <span class="q">“bldo Vicky y la familia fueron a Philadelphia ahora”.</span></p></div></div>
+      <div class="rk"><div class="num">4</div><div class="body"><div class="t">El forro que se rompió <span class="verdict">sabotaje del destino</span></div><p>La única vez que algo parecía ir a pasar, el universo intervino: <span class="q">“anto el forro se rompió”.</span> Ni ahí lo dejaron.</p></div></div>
+      <div class="rk"><div class="num">3</div><div class="body"><div class="t">Fiore <span class="verdict">el amor imposible</span></div><p>10 menciones de puro cope. Fiore tiene novio y Lauti lo sabe, pero fantasea igual: <span class="q">“anto, ¿de ver a Fiore se va a separar??”.</span> Después, la sentencia: “me presentaste a Fiore que tiene novio encima”.</p></div></div>
+      <div class="rk"><div class="num">2</div><div class="body"><div class="t">Shashu <span class="verdict">la ex que no vuelve</span></div><p>38 menciones. La ex del año pasado que lo dejó en visto todo un año. Manda mensajes por anto (“anto mándale buenas noches a shashu”), no le contestan “hace como una semana”, y termina amenazando al aire: <span class="q">“y que shashu se cuide”.</span></p></div></div>
+      <div class="rk"><div class="num">1</div><div class="body"><div class="t">Soltero, otra vez <span class="verdict">el final definitivo</span></div><p>Después de Fiore, shashu, Vicky, Martu, Verónica y compañía, el bad ending que engloba a todos: <span class="q">“a, no tengo novia o algo qsy”.</span> El papucho más papucho del planeta, terminando el año exactamente igual que como lo empezó.</p></div></div>
+    </div>
+  </section>
+
+  <!-- TOP 5 ORTIVEADAS PEPE -->
+  <section>
+    <span class="eyebrow hot">Sección especial</span>
+    <h2 class="head disp">Top 5 ortiveadas<br>de pepe díaz</h2>
+    <p class="dek">Pepe (alias “el negro”) confirma todos los planes y después no aparece. El arte de bajarse, ranqueado. Todo mientras acusa a los demás de “descanseros”.</p>
+    <div class="ranklist">
+      <div class="rk"><div class="num">5</div><div class="body"><div class="t">El de las condiciones <span class="verdict">ortiva selectivo</span></div><p>No se baja: te pone requisitos imposibles. <span class="q">“si no es alternativo no voy”.</span> Si no es exactamente lo que él quiere, no hay pepe.</p></div></div>
+      <div class="rk"><div class="num">4</div><div class="body"><div class="t">“El sábado no voy” <span class="verdict">reincidente</span></div><p>Frase de cabecera, dicha durante todo el año a distintos planes. “una vez que no voy” — mentira, pepe, fueron todas.</p></div></div>
+      <div class="rk"><div class="num">3</div><div class="body"><div class="t">El gimnasio fantasma <span class="verdict">deserción deportiva</span></div><p>Se anota al gimnasio con los pibes y a la mañana: <span class="q">“@Juampa @Lauti @Nacho mañana no voy al gim”.</span> El músculo quedó en el chat.</p></div></div>
+      <div class="rk"><div class="num">2</div><div class="body"><div class="t">“Me quedo dormido, mejor” <span class="verdict">baja por KO</span></div><p>El plan estaba, la hora estaba, pepe eligió la almohada: <span class="q">“me quedo dormido.mejor”.</span> El sueño le ganó al grupo, otra vez.</p></div></div>
+      <div class="rk"><div class="num">1</div><div class="body"><div class="t">“Perdón mati no puedo ir” <span class="verdict">la ortiveada perfecta</span></div><p>La baja de último momento, con nombre y apellido, dejando a alguien plantado. Y cuando le preguntan qué pasó, la única respuesta posible en su idioma: <span class="q">“WHAT PASONGA”</span> (dicho 20 veces en el año).</p></div></div>
+    </div>
+  </section>
+
+  <!-- QUE PREFERIS -->
+  <section>
+    <span class="eyebrow">El juego</span>
+    <h2 class="head disp">Top “qué<br>preferís”</h2>
+    <p class="dek">Una noche (29 de septiembre) el grupo jugó al “qué preferís” y las opciones se salieron completamente de control. Selección de las peores.</p>
+    <div class="thread">
+      <div class="in bub"><span class="nm">Juampa</span>¿Qué preferís? ¿Que te escupan 3 personas desde un techo, o caer de rodillas y pelártelas? <span class="tm">29 SEP</span></div>
+      <div class="out bub"><span class="nm">Nach000000000</span>¿Qué preferís? Una astilla en el dedo, o que explote tu corazón y te gorren <span class="tm">29 SEP</span></div>
+      <div class="in bub"><span class="nm">Nach000000000</span>Prefiero mear por los ojos <span class="tm">29 SEP</span></div>
+      <div class="out bub"><span class="nm">fort</span>Mal, prefiero coger con un hombre lobo antes <span class="tm">29 SEP</span></div>
+      <div class="in bub"><span class="nm">Nach000000000</span>Prefiero escuchar gritos de gente muriendo torturada <span class="tm">23 OCT</span></div>
+      <div class="out bub"><span class="nm">Nach000000000</span>¿Qué preferís, morir o vivir? <span class="tm">29 SEP</span></div>
+      <div class="in bub"><span class="nm">antito 🤧</span>Prefiero un auto a tener un hijo <span class="tm">11 MAR</span></div>
+      <div class="out bub"><span class="nm">Nach000000000</span>Prefiero el término “inseminador de inocentes” <span class="tm">08 DIC</span></div>
+    </div>
+  </section>
+
+  <!-- MOMENTOS HUMILLANTES -->
+  <section>
+    <span class="eyebrow hot">Registro de vergüenza</span>
+    <h2 class="head disp">Momentos<br>humillantes</h2>
+    <p class="dek">La palabra “vergüenza” aparece decenas de veces. Selección de los papelones mejor documentados del año.</p>
+    <div class="myth">
+      <div class="mcard">
+        <span class="n mono">22 OCT · anto</span>
+        <h3>La caída de las Big Macs</h3>
+        <p>anto se cae de las escaleras en el trabajo, se le vuelan 7 Big Macs y encima había público: <span class="q">“me puse roja de la vergüenza bld”.</span> Papelón laboral con testigos.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">24 OCT · Nacho</span>
+        <h3>La presentación fatídica</h3>
+        <p>Nacho no puede superar una exposición: <span class="q">“me da una vergüenza bárbara la presentación que hicimos”.</span> El trauma le duró días en el chat.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">Todo el año · pepe</span>
+        <h3>Humillado en el Genshin</h3>
+        <p>pepe intenta cargar a Zoe pero le sale al revés: <span class="q">“a Zoe no la puedo descansar con el genshin porque me re humilla”.</span> Derrotado en su propio terreno.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">16 OCT · fort</span>
+        <h3>Pérdida total de aura</h3>
+        <p>El veredicto más cruel que se dijeron entre ellos: <span class="q">“perdiste todas las auras y ganaste vergüenza”.</span> Cero aura, vergüenza al 100%.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">16 JUL · Bau</span>
+        <h3>Guerra en la caja</h3>
+        <p>Bau confiesa su método laboral: <span class="q">“puteábamos a los clientes así hacíamos pasar vergüenza a los de caja”.</span> El papelón como estrategia de equipo.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">21 AGO · anto</span>
+        <h3>Terror administrativo</h3>
+        <p>Cosas que a anto le dan más miedo que a vos la muerte: imprimir su currículum. <span class="q">“me da una vergüenza imprimir mis cv”.</span></p>
+      </div>
+    </div>
+  </section>
+
   <section>
     <span class="eyebrow">La cronología</span>
     <h2 class="head disp">Días icónicos</h2>
@@ -223,15 +318,21 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
         <span class="tag">día uno</span>
       </div>
       <div class="ev">
+        <div class="date mono">25 JUN · cumple de Bau</div>
+        <h3>El cumple del más peque</h3>
+        <p>Bautista Cariaga —alias “Toga”, el benjamín— cumple años. El grupo lo saluda con amor y con insultos en la misma frase: “te amamos aunque seas una excelente persona”. Tradición anual.</p>
+        <span class="tag">amor grupal</span>
+      </div>
+      <div class="ev">
         <div class="date mono">17 JUL 2025 · récord absoluto</div>
         <h3>El día de 1.974 mensajes</h3>
-        <p>El pico histórico del grupo. Lauti anuncia que “manifestó” a la ex de su primo, se autoproclama “re papucho” y deja la frase que definiría al chat para siempre. Mismo día: Nacho se pone de novio con Lourdes. Todo empieza acá.</p>
+        <p>El pico histórico del grupo. Lauti anuncia que “manifestó” a una chica, se autoproclama “re papucho” y deja la frase que definiría al chat para siempre. Mismo día: Nacho se pone de novio con Lourdes. Todo empieza acá.</p>
         <span class="tag">el big bang</span>
       </div>
       <div class="ev">
         <div class="date mono">22 OCT 2025</div>
         <h3>El karma de las 7 Big Macs</h3>
-        <p>Cumpleaños de Nacho (“boffe”). Horas después, antito se cae de las escaleras en el laburo y se le vuelan “como 7 Big Macs”. Su diagnóstico: karma “por burlarme de bauti”.</p>
+        <p>Cumpleaños de Nacho (“boffe”). Horas después, anto se cae de las escaleras en el laburo y se le vuelan “como 7 Big Macs”. Su diagnóstico: karma “por burlarme de bauti”.</p>
         <span class="tag">justicia divina</span>
       </div>
       <div class="ev">
@@ -239,12 +340,6 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
         <h3>La noche del eunuco</h3>
         <p>Una de las noches más largas del año. Debate filosófico sobre la palabra “eunuco”, maratón de Steven Universe y Meta AI obligada a generar imágenes imposibles. También aconseja no tocar “el misil en la calle”.</p>
         <span class="tag">peak absurdo</span>
-      </div>
-      <div class="ev">
-        <div class="date mono">24 NOV — 05 DIC 2025</div>
-        <h3>Temporada de finales</h3>
-        <p>Ola de “APROBÉ” en cadena: pepe, anto, fort (“aprobé stop motion”), Nacho consigue “un laburo bastante copado”. El grupo, sorprendentemente, también estudia.</p>
-        <span class="tag">productividad</span>
       </div>
       <div class="ev">
         <div class="date mono">11 MAY 2026</div>
@@ -258,16 +353,9 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
         <p>Nacho abre la crisis Lourdes más documentada del año con un parte oficial: “@todos malas noticias… el espejo no es compatible con el Suzuki, es demasiado grande, no entra”. Después, el drama real: parciales, ganas y monólogos épicos.</p>
         <span class="tag">culebrón</span>
       </div>
-      <div class="ev">
-        <div class="date mono">25 JUN 2026</div>
-        <h3>Cumple del más peque</h3>
-        <p>Bau cumple años y recibe el saludo más tierno del grupo: “te amamos bauti, aunque no lo parezca y aunque pareciera que no te lo merezcas”. En paralelo, fort festeja sus (chiste) 17.</p>
-        <span class="tag">amor grupal</span>
-      </div>
     </div>
   </section>
 
-  <!-- MOMENTOS DIVERTIDOS -->
   <section>
     <span class="eyebrow">Pruebas fotográficas</span>
     <h2 class="head disp">Momentos<br>divertidos</h2>
@@ -275,17 +363,15 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
     <div class="thread">
       <div class="in bub"><span class="nm">Lauti Gauna</span>no, soy irresistible bldo, era obvio. estoy re papucho <span class="tm">17 JUL</span></div>
       <div class="out bub"><span class="nm">Bau</span>estaba cagando y me levanté a aplaudir <span class="tm">17 JUL</span></div>
-      <div class="in bub"><span class="nm">Lauti Gauna</span>estaba aplaudiendo y cagué para levantarme <span class="tm">17 JUL</span></div>
-      <div class="out bub"><span class="nm">antito 🤧</span>saben, hoy me cayó el karma. me caí de las escaleras en el laburo y se me cayeron como 7 big macs <span class="tm">22 OCT</span></div>
-      <div class="in bub"><span class="nm">pepe diaz</span>es increíble como el autocorrector me cambia todo. quise poner “re piola” y me puso “re poco piola” <span class="tm">22 OCT</span></div>
-      <div class="out bub"><span class="nm">Juampa</span>te amamos bauti, aunque no lo parezca y aunque pareciera que no te lo merezcas <span class="tm">25 JUN</span></div>
+      <div class="in bub"><span class="nm">antito 🤧</span>le dije a mi psicóloga: mi mejor amigo está obsesionado con mi novio <span class="tm">04 JUL</span></div>
+      <div class="out bub"><span class="nm">pepe diaz</span>quise poner “re piola” y el autocorrector me puso “re poco piola” <span class="tm">22 OCT</span></div>
       <div class="in bub"><span class="nm">fort</span>gracias amigo!!! ahora voy a salir con una de 13 <span class="tm">25 JUN</span></div>
       <div class="out bub"><span class="nm">Juampa</span>me encontré un misil en la calle, ¿qué debo hacer? <span class="tm">28 NOV</span></div>
       <div class="in bub"><span class="nm">Meta AI 🤖</span>¡No toques el misil! Mantené distancia y llamá inmediatamente a las autoridades locales… <span class="tm">28 NOV</span></div>
+      <div class="out bub"><span class="nm">Lauti Gauna</span>yo estoy haciendo caca en mi inodoro. tenía que ser el chavo <span class="tm">25 JUN</span></div>
     </div>
   </section>
 
-  <!-- COSAS RARAS -->
   <section>
     <span class="eyebrow">Archivo X</span>
     <h2 class="head disp">Cosas raras</h2>
@@ -298,13 +384,13 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
       </div>
       <div class="mcard">
         <span class="n mono">Expediente 02</span>
-        <h3>“Extraño” × 30</h3>
-        <p>El grupo entró en loop existencial: extrañar la secundaria, extrañar a Córdoba, “extraño el mundo sin IA 😭”, hasta la meta-aclaración de Nacho: “es extraño de raro, no es que lo extraño de extrañar”.</p>
+        <h3>El clon homicida</h3>
+        <p>Nacho, sin que nadie preguntara: “ese era mi clon y lo tuve que matar porque me quería matar a mí”. No hubo repreguntas.</p>
       </div>
       <div class="mcard">
         <span class="n mono">Expediente 03</span>
-        <h3>El clon homicida</h3>
-        <p>Nacho, sin que nadie preguntara: “ese era mi clon y lo tuve que matar porque me quería matar a mí”. No hubo repreguntas.</p>
+        <h3>La otra línea temporal</h3>
+        <p>Nacho reporta un avistamiento imposible: “amigo estoy viendo a Marcelo Fortunato electricista de otra línea temporal”. El multiverso, pero en zona norte.</p>
       </div>
       <div class="mcard">
         <span class="n mono">Expediente 04</span>
@@ -314,122 +400,126 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
     </div>
   </section>
 
-  <!-- COSAS TENEBROSAS -->
   <section>
     <span class="eyebrow">Advertencia</span>
-    <h2 class="head disp">Cosas tenebrosas</h2>
+    <h2 class="head disp">Momentos<br>tenebrosos</h2>
     <p class="dek">El lado oscuro del expediente. 302 mensajes mencionan la palabra “matar” o “miedo”. La mayoría, por suerte, en broma.</p>
     <div class="thread">
       <div class="in bub"><span class="nm">Nach000000000</span>yo te voy a matar a vos y te voy a despedazar <span class="tm">25 JUN</span></div>
       <div class="out bub"><span class="nm">Juampa</span>viste que cuando empezás algo y va bien, te da miedo contarlo, porque cuando lo contás se va a la verga <span class="tm">15 JUL</span></div>
-      <div class="in bub"><span class="nm">antito 🤧</span>tengo mucho miedo lpm <span class="tm">25 JUL</span></div>
+      <div class="in bub"><span class="nm">antito 🤧</span>yo me suicido si Agus se corta el pelo <span class="tm">15 JUL</span></div>
       <div class="out bub"><span class="nm">fort</span>chabón, qué miedo que sepa tanto de vos <span class="tm">21 JUN</span></div>
       <div class="in bub"><span class="nm">Nach000000000</span>he muerto. <span class="tm">01 JUL</span></div>
     </div>
-    <p class="note">Nota del editor: nadie salió lastimado. Salvo antito, por las escaleras. Y fort, por el minoxidil.</p>
+    <p class="note">Nota del editor: nadie salió lastimado. Salvo anto, por las escaleras. Y fort, por el minoxidil.</p>
   </section>
 
-  <!-- MITOLOGÍA / CHISTES INTERNOS -->
+  <!-- PAREJAS -->
   <section>
-    <span class="eyebrow">Diccionario interno</span>
-    <h2 class="head disp">La mitología<br>del grupo</h2>
-    <p class="dek">Cinco leyendas que hay que conocer para entender de qué se ríen. No se explican afuera.</p>
+    <span class="eyebrow">Vida privada</span>
+    <h2 class="head disp">Parejas del<br>grupo</h2>
+    <p class="dek">El estado sentimental de la Oreja de Vancho, de la más sólida a la más… Lauti.</p>
     <div class="myth">
       <div class="mcard">
-        <span class="n mono">La saga · 206 menciones</span>
+        <span class="n mono">La estable</span>
+        <h3>anto ❤️ Agus</h3>
+        <p>La única pareja que funciona. anto vive contando lo enamorada que está (“QUÉ BUENO QUE ES MI NOVIO”), Agus lee meditaciones de Marco Aurelio y aprende a manejar. Ella lo amenaza con lo único serio: “yo me suicido si Agus se corta el pelo”.</p>
+      </div>
+      <div class="mcard">
+        <span class="n mono">El culebrón</span>
         <h3>Nacho ❤️ Lourdes</h3>
-        <p>El culebrón oficial del chat. De “nos pusimos de novios” a “no está dispuesta a sacrificar ni un minuto esta piba”. Nacho narra su vida amorosa en monólogos de 15 mensajes seguidos y el grupo hace de terapia.</p>
+        <p>Novios con temporadas dramáticas. Parciales, autos, espejos que no entran en el Suzuki y monólogos de 15 mensajes. El grupo entero hace de terapeuta de Nacho.</p>
       </div>
       <div class="mcard">
-        <span class="n mono">El rehén · 254 msgs</span>
-        <h3>Meta AI</h3>
-        <p>El único integrante no humano. Lo etiquetan para que genere eunucos, insulte gente y opine sobre misiles. Su frase más usada: “Sorry, I can’t help you with this request right now.”</p>
+        <span class="n mono">La tranqui</span>
+        <h3>Juampa ❤️ Mile</h3>
+        <p>La pareja de bajo perfil. Mile aparece para organizar planes (“ir a ver el partido de Argentina a su casa”) y Juampa manda saludos. Sin escándalos. Raro para este grupo.</p>
       </div>
       <div class="mcard">
-        <span class="n mono">Terror capilar · 15 menciones</span>
-        <h3>El minoxidil</h3>
-        <p>fort declara: “chicos, el minoxidil me dejó pelado”. Nace la obsesión capilar compartida con Nacho: “esto me hizo el Minoxidil”. La lucha continúa.</p>
-      </div>
-      <div class="mcard">
-        <span class="n mono">Autoestima · nivel dios</span>
-        <h3>El papuchismo</h3>
-        <p>Doctrina de Lauti Gauna: “ella quiere un hombre y yo soy hombre, y aparte soy re papucho. Estoy más papucho que cuando me conoció.” Dicho sobre la ex de su primo.</p>
-      </div>
-      <div class="mcard">
-        <span class="n mono">Ley del grupo</span>
-        <h3>“No la pinchen”</h3>
-        <p>Mandato sagrado antes de cada juntada, dirigido a que nadie se vaya temprano “como en lo de Lourdes”. Se incumple siempre. Alguien siempre se duerme en el sillón (spoiler: anto).</p>
-      </div>
-      <div class="mcard">
-        <span class="n mono">Identidad</span>
-        <h3>La Oreja de Vancho</h3>
-        <p>El nombre. La marca. La productora imaginaria que “se va a refundar pronto”. Filosofía interna: “la Oreja de Vancho ya es la peor, así que no podés caer más bajo”.</p>
+        <span class="n mono">El eterno soltero</span>
+        <h3>Lauti ❤️ nadie</h3>
+        <p>Ver <em>“Top 10 bad endings”</em> más arriba. 70 “te amo” repartidos en el grupo, cero novias conseguidas. El hombre más papucho y más solo del expediente.</p>
       </div>
     </div>
   </section>
 
-  <!-- VEREDICTOS -->
+  <!-- DICCIONARIO -->
+  <section>
+    <span class="eyebrow">Diccionario interno</span>
+    <h2 class="head disp">Cómo hablar<br>en vancho</h2>
+    <p class="dek">Glosario oficial. Sin esto, el chat es ilegible para cualquier persona normal.</p>
+    <div class="dict">
+      <div class="dt"><div class="w">bldo</div><div class="d">“boludo”, pero sin vocales. Dicho <b>508 veces por Lauti</b> y 313 por Juampa. La partícula base del idioma.</div></div>
+      <div class="dt"><div class="w">papucho</div><div class="d">Galán, irresistible. Doctrina de Lauti: <b>“estoy más papucho que cuando me conoció”.</b></div></div>
+      <div class="dt"><div class="w">ortiva / ortiveada</div><div class="d">El que confirma el plan y no aparece. Ver: <b>Pepe Díaz</b>, obra completa.</div></div>
+      <div class="dt"><div class="w">descansero</div><div class="d">El que te vacila sin piedad. Pepe acusa a todos de serlo mientras es el campeón.</div></div>
+      <div class="dt"><div class="w">what pasonga</div><div class="d">“¿qué pasó?”, en idioma pepe. <b>Dicho 20 veces</b>, casi siempre haciéndose el sorprendido.</div></div>
+      <div class="dt"><div class="w">la pincha / pinchar</div><div class="d">Cuando la juntada se muere temprano. El mayor pecado. Ley grupal: “no la pinchen”.</div></div>
+      <div class="dt"><div class="w">re poco piola</div><div class="d">Lo que el autocorrector de pepe escribe cuando él quiso poner “re piola”. Nadie le cree.</div></div>
+      <div class="dt"><div class="w">la peor</div><div class="d">Ser “la peor” es un honor. Filosofía: “la Oreja de Vancho ya es la peor, así que no podés caer más bajo”.</div></div>
+    </div>
+  </section>
+
   <section>
     <span class="eyebrow">Fallo del jurado</span>
     <h2 class="head disp">Los veredictos</h2>
     <p class="dek">Premios oficiales del año, otorgados por la evidencia, sin posibilidad de apelación.</p>
     <div class="verd">
       <div class="stamp"><div class="em">🗣️</div><div class="ttl">El Charlatán Mayor</div><div class="win">Lauti Gauna</div><div class="sc mono">35.075 mensajes</div></div>
-      <div class="stamp"><div class="em">📸</div><div class="ttl">Rey del Multimedia</div><div class="win">antito 🤧</div><div class="sc mono">3.407 fotos/stickers</div></div>
-      <div class="stamp"><div class="em">😂</div><div class="ttl">La Risa Fácil</div><div class="win">Lauti Gauna</div><div class="sc mono">2.688 jaja</div></div>
+      <div class="stamp"><div class="em">📸</div><div class="ttl">Reina del Multimedia</div><div class="win">antito 🤧</div><div class="sc mono">3.407 fotos/stickers</div></div>
+      <div class="stamp"><div class="em">💔</div><div class="ttl">Rey del Bad Ending</div><div class="win">Lauti Gauna</div><div class="sc mono">0 novias / año</div></div>
+      <div class="stamp"><div class="em">🛑</div><div class="ttl">El Ortiva Mayor</div><div class="win">pepe diaz</div><div class="sc mono">“el sábado no voy”</div></div>
       <div class="stamp"><div class="em">🌙</div><div class="ttl">El Vampiro</div><div class="win">Lauti Gauna</div><div class="sc mono">1.688 msgs de 1-5 AM</div></div>
       <div class="stamp"><div class="em">🗑️</div><div class="ttl">Borra Pruebas</div><div class="win">Juampa</div><div class="sc mono">37 mensajes eliminados</div></div>
-      <div class="stamp"><div class="em">🙏</div><div class="ttl">El Arrepentido</div><div class="win">Juampa</div><div class="sc mono">27 veces “perdón”</div></div>
       <div class="stamp"><div class="em">❤️‍🔥</div><div class="ttl">El Novelista</div><div class="win">Nach000000000</div><div class="sc mono">saga Lourdes</div></div>
       <div class="stamp"><div class="em">👻</div><div class="ttl">El Fantasma</div><div class="win">Agus</div><div class="sc mono">solo 659 mensajes</div></div>
       <div class="stamp"><div class="em">🤖</div><div class="ttl">La Víctima</div><div class="win">Meta AI</div><div class="sc mono">rehén del grupo</div></div>
     </div>
   </section>
 
-  <!-- PERFILES -->
   <section>
     <span class="eyebrow">Los sospechosos</span>
     <h2 class="head disp">Ficha de<br>cada uno</h2>
-    <p class="dek">Perfil psicológico basado enteramente en lo que dejaron escrito.</p>
+    <p class="dek">Perfil basado enteramente en lo que dejaron escrito. Ocho humanos y una IA.</p>
     <div class="cards">
       <div class="card">
         <div class="top"><span class="nm">Lauti Gauna</span><span class="role">el presidente</span></div>
-        <p>El motor. Un tercio de todo el chat es él. Rey de las risas, de la madrugada, del “bldo” y del “te amo”. Narrador épico de sus propias hazañas amorosas y el más papucho del planeta (según él).</p>
-        <div class="meta"><span class="chip"><b>35.075</b> msgs</span><span class="chip"><b>1.688</b> madrugadas</span><span class="chip"><b>70</b> “te amo”</span></div>
+        <p>El motor. Un tercio de todo el chat es él. Rey de las risas, de la madrugada, del “bldo” y del “te amo”. Enamoradizo serial: se ilusiona con todas y no conquista a ninguna. El más papucho y más solo del grupo.</p>
+        <div class="meta"><span class="chip"><b>35.075</b> msgs</span><span class="chip"><b>1.688</b> madrugadas</span><span class="chip"><b>0</b> novias</span></div>
       </div>
       <div class="card">
-        <div class="top"><span class="nm">antito 🤧</span><span class="role">el fotógrafo</span></div>
-        <p>Puro caos visual: 3.407 fotos y stickers, más que nadie. El que más veces rompe el silencio del grupo. Karma andante, nostálgico crónico (“extraño la secundaria todos los días”) y torturador oficial de Meta AI.</p>
+        <div class="top"><span class="nm">antito 🤧</span><span class="role">la única mujer</span></div>
+        <p>La única mina del grupo y la reina del multimedia (3.407 fotos y stickers). Novia de Agus, con psicóloga, papá policía y trabajo que odia. Dramática, graciosísima (“soy la mujer más graciosa que conocés, no?”) y torturadora oficial de Meta AI.</p>
         <div class="meta"><span class="chip"><b>3.407</b> multimedia</span><span class="chip"><b>92</b> arranques</span></div>
       </div>
       <div class="card">
         <div class="top"><span class="nm">Juampa</span><span class="role">el comediante</span></div>
-        <p>Segundo en risas y campeón indiscutido de mensajes borrados. También el que más pide perdón: comete el crimen, borra la prueba y se disculpa. Dupla histórica de “bldo” con Lauti.</p>
+        <p>Segundo en risas y campeón indiscutido de mensajes borrados. También el que más pide perdón: comete el crimen, borra la prueba y se disculpa. De novio tranqui con Mile. Dupla histórica de “bldo” con Lauti.</p>
         <div class="meta"><span class="chip"><b>37</b> borrados</span><span class="chip"><b>27</b> “perdón”</span><span class="chip"><b>313</b> “bldo”</span></div>
       </div>
       <div class="card">
-        <div class="top"><span class="nm">pepe diaz</span><span class="role">el del autocorrector</span></div>
-        <p>Le echa toda la culpa al autocorrector (“re piola” → “re poco piola”). Coleccionista de logros pequeños —un bolsito, unos zapatos, una skin de Fortnite— y gamer de LoL con Mauri.</p>
-        <div class="meta"><span class="chip"><b>16.271</b> msgs</span><span class="chip"><b>768</b> madrugadas</span></div>
+        <div class="top"><span class="nm">pepe diaz</span><span class="role">el ortiva</span></div>
+        <p>Alias “el negro”. Confirma todo y no va a nada. Le echa la culpa al autocorrector (“re piola” → “re poco piola”), grita “WHAT PASONGA”, junta logros chiquitos (un bolsito, unos zapatos) y juega al LoL con Mauri.</p>
+        <div class="meta"><span class="chip"><b>16.271</b> msgs</span><span class="chip"><b>20</b> “what pasonga”</span></div>
       </div>
       <div class="card">
-        <div class="top"><span class="nm">fort</span><span class="role">el monologuista</span></div>
-        <p>Récord de monólogo: 38 mensajes seguidos sin que nadie conteste. Humor seco, “te amo” fáciles y una guerra personal contra la calvicie que documenta en tiempo real.</p>
+        <div class="top"><span class="nm">fort</span><span class="role">el otro bauti</span></div>
+        <p>El segundo Bautista del grupo (Fortunato). Récord de monólogo: 38 mensajes seguidos sin que nadie conteste. Humor seco, “te amo” fáciles, guerra personal contra la calvicie y víctima de la carga eterna sobre “su papá Héctor y su mamá Claudia”.</p>
         <div class="meta"><span class="chip"><b>38</b> msgs seguidos</span><span class="chip"><b>31</b> “te amo”</span></div>
       </div>
       <div class="card">
         <div class="top"><span class="nm">Bau</span><span class="role">el benjamín</span></div>
-        <p>El más peque del grupo, festejado cada 25 de junio. Adicto a mandar fotos (1.070) y a las risas en mayúscula. Coprotagonista del episodio “estaba cagando y me levanté a aplaudir”.</p>
+        <p>Bautista Cariaga, alias “Toga”, el más peque, festejado cada 25 de junio. Adicto a mandar fotos (1.070) y a las risas en mayúscula. Coprotagonista del episodio “estaba cagando y me levanté a aplaudir”. Dueño del chat.</p>
         <div class="meta"><span class="chip"><b>1.070</b> multimedia</span><span class="chip"><b>961</b> jaja</span></div>
       </div>
       <div class="card">
         <div class="top"><span class="nm">Nach000000000</span><span class="role">el novelista</span></div>
-        <p>Sus mensajes son los más largos del chat. La saga con Lourdes es su novela por entregas y el grupo, su editorial. Gamer, dramático y autor de “he muerto.” como estado emocional.</p>
+        <p>Sus mensajes son los más largos del chat. La saga con Lourdes es su novela por entregas y el grupo, su editorial. Gamer, dramático, campeón del “qué preferís” más enfermo y autor de “he muerto.” como estado emocional.</p>
         <div class="meta"><span class="chip"><b>28,4</b> caract. promedio</span><span class="chip"><b>206</b> “Lourdes”</span></div>
       </div>
       <div class="card">
-        <div class="top"><span class="nm">Agus 👻</span><span class="role">el fantasma</span></div>
-        <p>Aparece cada tanto y desaparece. 659 mensajes en todo el año: menos que las risas que Lauti manda en un mes. Consiguió “una changuita en una constructora por Benavídez”.</p>
+        <div class="top"><span class="nm">Agus 👻</span><span class="role">el fantasma / novio</span></div>
+        <p>Novio de anto y el más silencioso del grupo: 659 mensajes en todo el año. Lee a Marco Aurelio, aprende a manejar y consiguió “una changuita en una constructora por Benavídez”. Presente en el corazón de anto, ausente en el chat.</p>
         <div class="meta"><span class="chip"><b>659</b> msgs</span><span class="chip">modo avión</span></div>
       </div>
     </div>
@@ -439,8 +529,8 @@ footer .dl{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.0
 
   <footer>
     <div class="big disp">Se levanta<br>la sesión</div>
-    <p>391 días, 132.906 mensajes y una sola conclusión: nadie va a poder caer más bajo que La Oreja de Vancho. Y eso, acá, es un cumplido.</p>
-    <div class="dl mono">Expediente cerrado · 13 JUL 2026 · próxima edición cuando anto mande 3.408 stickers</div>
+    <p>391 días, 132.906 mensajes, 10 bad endings de Lauti, incontables ortiveadas de pepe y una sola conclusión: nadie va a poder caer más bajo que La Oreja de Vancho. Y eso, acá, es un cumplido.</p>
+    <div class="dl mono">Expediente cerrado · 13 JUL 2026 · próxima edición cuando pepe por fin vaya a un plan</div>
   </footer>
 
 </div>
